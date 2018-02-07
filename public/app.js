@@ -20,12 +20,14 @@ $.getJSON("http://localhost:8000/cuisines", function(data) {
 });
 
 
-// On-click for <button> tag
-$(document).on("click", "button", function() {
+// On-click for <p> tag
+$(document).on("click", "p", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
   var thisId = $(this).attr("data-id");
+  //checking
+  console.log("thisId is:" + thisId)
 
   // Now make an ajax call for the Cuisine
   $.ajax({

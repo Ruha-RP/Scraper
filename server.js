@@ -1,5 +1,6 @@
 //Dependencies
 var express = require("express");
+var exphbs = require("express-handlebars");
 var mongojs = require("mongojs");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
@@ -11,6 +12,10 @@ var cheerio = require("cheerio");
 //Initializing express
 var app = express();
 var PORT = 8000;
+
+// Set Handlebars as the default templating engine.
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 //Requiring models
 var db = require("./models");
@@ -37,6 +42,12 @@ mongoose.connect(MONGODB_URI, {
 });
 
 //ROUTES
+//main page route
+app.get("/", function(req, res) {
+
+  //rendering the index page
+  res.render("index");
+});
 //the route that will scrape data
 app.get("/scrape", function(req, res) {
 	//Making the request 
