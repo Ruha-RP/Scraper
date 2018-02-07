@@ -33,7 +33,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {
 	//CLI told me to remove the line below
-  	// useMongoClient: true
+  	useMongoClient: true
 });
 
 //ROUTES
@@ -68,7 +68,7 @@ app.get("/scrape", function(req, res) {
 			// 	summary: summary
 			// });
 
-			// Create a new Cuisine using the `result` object built from scraping
+			// Create a new Cuisine using the `results` object built from scraping
 	        db.Cuisine.create(results)
 	        .then(function(dbCuisine) {
 	          // View the added result in the console
@@ -90,41 +90,6 @@ app.get("/scrape", function(req, res) {
 	});
 
 });
-
-// //Making the request 
-// request("http://www.bbc.co.uk/food/cuisines", function(error, response, html) {
-
-// 	//Loading the html
-// 	var $ = cheerio.load(html);
-
-// 	//Empty array to save scraped data
-// 	var results = [];
- 	
-// 	//targeting the li element
-// 	$("li.cuisine").each(function(i, element) {
-
-// 		//saving the cuisine-title text in title variable
-// 		var title = $(element).find("h3").find("a").find("span").text();
-
-// 		//saving the link to the link variable
-// 		var link = $(element).find("h3").find("a").attr("href");
-
-// 		//saving the summary to the summary variable
-// 		var summary = $(element).find("p").text();
-
-// 		//saving the results into the array
-// 		results.push({
-// 			title: title,
-// 			link: "www.bbc.co.uk"+link,
-// 			summary: summary
-// 		});
-
-// 	});
-
-// 	//Logging the results
-// 	console.log(results);
-	
-// });
 
 
 
