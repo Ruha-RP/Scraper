@@ -1,15 +1,27 @@
+function displayResults(cuisines) {
+  // First, empty the table
+  $("#cuisines").empty();
+
+  // Then, for each entry of that json...
+  cuisines.forEach(function(cuisine) {
+    // Append each of the cuisine's properties to the table
+    // $("#cuisines").append("<p>" + cuisine.title + "</br>" + "www.bbc.co.uk" + 
+    //                       cuisine.link + "</br>" +
+    //                       cuisine.summary + "</p>" + "<button>" + "Make a Note" + "</button>");
+
+    $("#cuisines").append("<p data-id='" + cuisine._id + "'>" + cuisine.title + "<br />www.bbc.co.uk" + cuisine.link + "<br />" + cuisine.summary + "</p>");
+  });
+}
+
+
 // Grab the cuisines as a json
-$.getJSON("/cuisines", function(data) {
-  // For each one
-  for (var i = 0; i < data.length; i++) {
-    // Display  on the page
-    $("#cuisines").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary"</p>");
-  }
+$.getJSON("http://localhost:8000/cuisines", function(data) {
+  displayResults(data);
 });
 
 
-// On-click for <p> tag
-$(document).on("click", "p", function() {
+// On-click for <button> tag
+$(document).on("click", "button", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
