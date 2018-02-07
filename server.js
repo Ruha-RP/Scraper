@@ -11,7 +11,7 @@ var cheerio = require("cheerio");
 
 //Initializing express
 var app = express();
-var PORT = 8000;
+var PORT = process.env.PORT || 8000;
 
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
