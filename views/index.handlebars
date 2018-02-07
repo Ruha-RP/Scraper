@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Cuisine Scraper</title>
     <style>
-      body { background-color: #F2F6D0 }
+      
       #wrapper {
         width: 960px;
         margin-left: auto;
@@ -38,11 +38,20 @@
   </head>
   <body>
     <div id="wrapper">
-      <h1>Cuisine Scraper</h1>
-      <h2><i>What do you want to eat?</i></h2>
-      <div id="cuisines"></div>
-      <div id="notes"></div>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Cuisine Scraper</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/scrape">Need some inspiration?</a></li>
+          </ul>
+        </div>
+      </nav>
+
+        <div id="cuisines" class="card-panel teal lighten-3"></div>
+        <div id="notes"></div>
+  
     </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="app.js"></script>
   </body>

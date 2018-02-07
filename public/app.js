@@ -9,7 +9,7 @@ function displayResults(cuisines) {
     //                       cuisine.link + "</br>" +
     //                       cuisine.summary + "</p>" + "<button>" + "Make a Note" + "</button>");
 
-    $("#cuisines").append("<p data-id='" + cuisine._id + "'>" + cuisine.title + "<br />www.bbc.co.uk" + cuisine.link + "<br />" + cuisine.summary + "</p>");
+    $("#cuisines").append("<p><strong>" + cuisine.title + "</strong><br />www.bbc.co.uk" + cuisine.link + "<br />" + cuisine.summary + "</p><button class='waves-effect waves-light btn red lighten-2' data-id='" + cuisine._id + "'>Save Note</button> <button class='waves-effect waves-light btn red lighten-2'>Delete Note</button>");
   });
 }
 
@@ -21,13 +21,13 @@ $.getJSON("http://localhost:8000/cuisines", function(data) {
 
 
 // On-click for <p> tag
-$(document).on("click", "p", function() {
+$(document).on("click", "button", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
   var thisId = $(this).attr("data-id");
   //checking
-  console.log("thisId is:" + thisId)
+  console.log("thisId is:" + thisId);
 
   // Now make an ajax call for the Cuisine
   $.ajax({
