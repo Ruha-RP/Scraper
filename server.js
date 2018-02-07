@@ -36,6 +36,10 @@ mongoose.connect(MONGODB_URI, {
   	// useMongoClient: true
 });
 
+//ROUTES
+
+//GET route that will dhow that scrape is complete
+
 //Making the request 
 request("http://www.bbc.co.uk/food/cuisines", function(error, response, html) {
 
